@@ -7,7 +7,7 @@ app.controller("mainController", function () {
 });
 
 
-app.controller("profileController", function ($scope, $user, $http) {
+app.controller("profileController", function (ProfileServices, $scope, $user) {
     console.log("Profile Controller");
 
     $user.get()
@@ -19,6 +19,15 @@ app.controller("profileController", function ($scope, $user, $http) {
             console.log("Error: ", error);
         });
 
-
-
+    $scope.submitEdits = function () {
+        var editsToSubmit = $scope.edits;
+        ProfileServices.submitEdits(editsToSubmit)
+            .then(function (response) {
+                console.log("response: ", response);
+            })
+            .catch(function (error) {
+                console.log("Error: ", error);
+            })
+    };    
+    
 });

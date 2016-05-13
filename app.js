@@ -22,6 +22,9 @@ app.use(stormpath.init(app, {
             enabled : true,
             view : path.join(__dirname, "views", "index.html")
         }
+    },
+    expand : {
+        customData : true
     }
 }));
 

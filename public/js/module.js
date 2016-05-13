@@ -46,6 +46,15 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state("editProfile", {
+            url : "/editProfile",
+            views : {
+                "body" : {
+                    templateUrl : "/html/editProfile.html",
+                    controller : "profileController"
+                }
+            }
+        })
 
 
     $urlRouterProvider.otherwise("/");
