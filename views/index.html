@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <script src="/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.min.js"></script>
+    <script src="/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.min.js"></script>
+
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/bootstrap-material-design.min.css">
+
+    <link rel="stylesheet" href="./simple-sidebar.css">
+
+    <!--Personal CSS-->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!--Personal Angular-->
+    <script src="/js/module.js"></script>
+    <script src="/js/services.js"></script>
+    <script src="/js/controllers.js"></script>
+
+
+</head>
+<body ng-app="socialNetworkApp" ng-controller="mainController">
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a style="color : #303F9F" class="navbar-brand" ui-sref="home">WindUpDurb Social Network</a>
+        </div>
+    </div>
+
+    <!--Logout field if activeUser/Register button if not activeUser-->
+
+    <div  class="navbar-form navbar-right">
+        <div if-user>
+            <div class="col-md-10">
+                Hello, {{ activeUser.github ||activeUser.name || activeUser.email || "User"}}
+            </div>
+            <div class="col-md-10">
+                <button ui-sref="home" sp-logout type="button" class="btn btn-primary" style="color: #303F9F">Logout</button>
+            </div>
+        </div>
+
+        <div if-not-user>
+            <div class="col-md-10">
+                Hello. Please login down below, or register with by clicking:
+            </div>
+            <div class="col-md-10">
+                <button ui-sref="login" type="button" class="btn btn-primary" style="color: #303F9F">Login</button>
+                <button ui-sref="register" type="button" class="btn btn-primary" style="color: #303F9F">Register</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<br>
+<!--End of the Header/Navbar-->
+
+<div class="container" ui-view="notActiveBody"></div>
+
+<div if-user id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a ui-sref="profile">Profile</a>
+            </li>
+            <li class="sidebar-brand">
+                <a ui-sref="editProfile">Edit Profile</a>
+            </li>
+
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <!--Navbar-->
+                    <div class="container">
+                        <div class="container" ui-view="body">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -- Keep Above -->
+
+</div>
+<!-- /#wrapper -->
+
+
+</body>
+</html>

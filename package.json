@@ -1,0 +1,24 @@
+{
+  "name": "simple-social-network-stormpath",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "bower": "^1.7.9",
+    "cookie-parser": "^1.4.1",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "express-stormpath": "^3.1.2",
+    "mongoose": "^4.4.16",
+    "morgan": "^1.7.0",
+    "stormpath-sdk-angularjs": "^1.0.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
